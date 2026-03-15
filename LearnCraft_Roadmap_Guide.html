@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LearnCraft — Roadmap complète</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --brand:#5B4FE8;--brand-light:#EAE8FF;
+  --accent:#10B981;--gold:#F59E0B;--danger:#EF4444;
+  --bg:#fff;--bg-sec:#f8f9fa;--bg-ter:#f1f3f5;
+  --border:rgba(0,0,0,.08);--border-med:rgba(0,0,0,.14);
+  --text:#111827;--text-sec:#6b7280;--text-muted:#9ca3af;
+  --r-md:8px;--r-lg:12px;
+  --font:'Inter',system-ui,-apple-system,sans-serif
+}
+@media(prefers-color-scheme:dark){:root{
+  --bg:#0F1117;--bg-sec:#1A1D2E;--bg-ter:#252840;
+  --border:rgba(255,255,255,.07);--border-med:rgba(255,255,255,.12);
+  --text:#f9fafb;--text-sec:#9ca3af;--text-muted:#6b7280
+}}
+html{font-family:var(--font);background:var(--bg);color:var(--text)}
+body{max-width:920px;margin:0 auto;padding:2rem 1.25rem 5rem}
+
+/* HEADER */
+.hdr{padding-bottom:1.5rem;border-bottom:.5px solid var(--border-med);margin-bottom:1.75rem}
+.hdr h1{font-size:22px;font-weight:600}
+.hdr p{font-size:13px;color:var(--text-sec);margin-top:5px}
+.pw{background:var(--bg-sec);border-radius:99px;height:6px;margin-top:12px;overflow:hidden}
+.pf{height:100%;border-radius:99px;background:var(--brand);transition:width .4s}
+.cd{display:flex;align-items:center;gap:7px;margin-top:8px;font-size:12px;color:var(--text-sec);flex-wrap:wrap}
+.cb{padding:2px 9px;border-radius:99px;font-size:11px;font-weight:600}
+.cb-w{background:#FEF3C7;color:#92400E}
+.cb-r{background:#FEE2E2;color:#991B1B}
+.cb-g{background:#D1FAE5;color:#065F46}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:1.75rem}
+.stat{background:var(--bg-sec);border-radius:var(--r-md);padding:10px 11px;border:.5px solid var(--border)}
+.sn{font-size:19px;font-weight:600}
+.sl{font-size:10px;color:var(--text-sec);margin-top:2px}
+
+/* TIMELINE */
+.tl-wrap{margin-bottom:1.75rem;overflow-x:auto;padding-bottom:4px}
+.tl-mo{display:flex;gap:3px;min-width:680px;margin-bottom:3px}
+.tl-m{flex:1;font-size:9px;color:var(--text-muted);text-align:center}
+.tl-tr{display:flex;gap:3px;min-width:680px}
+.tl-s{flex:1;height:24px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:white;overflow:hidden;padding:2px 3px;text-align:center;white-space:nowrap}
+.tl-v{background:#374151!important;color:#9ca3af!important;font-style:italic}
+
+/* FILTERS */
+.fbar{display:flex;gap:6px;margin-bottom:1.5rem;flex-wrap:wrap}
+.fb{font-size:11px;padding:5px 12px;border-radius:99px;border:.5px solid var(--border-med);background:var(--bg);color:var(--text-sec);cursor:pointer;transition:all .15s;font-family:var(--font)}
+.fb.on{background:var(--brand);color:white;border-color:var(--brand)}
+.fb:hover:not(.on){background:var(--bg-sec)}
+
+/* PHASE */
+.phase{margin-bottom:10px;border:.5px solid var(--border-med);border-radius:var(--r-lg);overflow:hidden}
+.ph{padding:12px 16px;display:flex;align-items:center;gap:10px;cursor:pointer;background:var(--bg);user-select:none;transition:background .15s}
+.ph:hover{background:var(--bg-sec)}
+.ph-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.ph-ti{font-size:13.5px;font-weight:600;flex:1}
+.ph-wk{font-size:11px;color:var(--text-sec);white-space:nowrap}
+.ph-tm{font-size:11px;color:var(--text-muted);white-space:nowrap}
+.pbg{font-size:11px;padding:3px 9px;border-radius:99px;font-weight:600;white-space:nowrap}
+.pb-td{background:var(--bg-sec);color:var(--text-sec)}
+.pb-ac{background:var(--brand-light);color:var(--brand)}
+.pb-dn{background:#D1FAE5;color:#065F46}
+.pb-bk{background:#FEE2E2;color:#991B1B}
+.chv{font-size:11px;color:var(--text-muted);transition:transform .2s;flex-shrink:0}
+.chv.op{transform:rotate(180deg)}
+
+/* BODY */
+.pb{display:none;border-top:.5px solid var(--border)}
+.pb.op{display:block}
+.pi{display:grid;grid-template-columns:repeat(4,1fr)}
+.ic{padding:9px 14px}
+.ic+.ic{border-left:.5px solid var(--border)}
+.il{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
+.iv{font-size:12px;font-weight:600}
+.iv.r{color:var(--danger)}
+.iv.g{color:var(--accent)}
+.iv.b{color:var(--brand)}
+.obj{margin:10px 14px 11px;padding:9px 13px;border-left:2px solid var(--brand);border-radius:0 var(--r-md) var(--r-md) 0;background:var(--bg-sec)}
+.ol{font-size:10px;font-weight:600;color:var(--brand);text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
+.ot{font-size:12px;color:var(--text-sec);line-height:1.55}
+.vb{margin:0 14px 11px;padding:9px 13px;background:#FEF3C7;border-radius:var(--r-md);border:.5px solid #F59E0B;font-size:11px;color:#92400E;font-weight:500}
+.tb{height:3px;background:var(--bg-ter);margin:0 14px 11px;border-radius:99px;overflow:hidden}
+.tbf{height:100%;border-radius:99px;transition:width .3s}
+
+/* SPRINT */
+.sp{padding:11px 14px;border-bottom:.5px solid var(--border)}
+.sp:last-of-type{border-bottom:none}
+.sph{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.spn{font-size:10px;font-weight:600;color:var(--text-sec);background:var(--bg-ter);padding:2px 8px;border-radius:99px}
+.spt{font-size:12.5px;font-weight:600;flex:1}
+.spd{font-size:11px;color:var(--text-sec)}
+.spdl{font-size:11px;color:var(--danger);font-weight:600}
+.sp-meta{display:flex;gap:12px;margin-bottom:6px;font-size:11px;color:var(--text-muted)}
+.sp-meta span{display:flex;align-items:center;gap:4px}
+
+/* TASKS */
+.tasks{display:flex;flex-direction:column;gap:2px}
+.task{border-radius:var(--r-md);border:.5px solid transparent;transition:all .13s;overflow:hidden}
+.task:hover{border-color:var(--border);background:var(--bg-sec)}
+.task.open .tk-extra{display:block}
+.tk-main{display:flex;align-items:flex-start;gap:9px;padding:7px 9px;cursor:pointer}
+.chk{width:15px;height:15px;border-radius:4px;border:1px solid var(--border-med);flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .15s;background:var(--bg)}
+.chk.on{background:var(--brand);border-color:var(--brand)}
+.chk.on::after{content:'✓';font-size:9px;color:white;line-height:1}
+.tk-c{flex:1;min-width:0}
+.tk-n{font-size:12px;line-height:1.45;color:var(--text)}
+.tk-n.done{color:var(--text-muted);text-decoration:line-through}
+.tk-row{display:flex;align-items:center;gap:6px;margin-top:4px;flex-wrap:wrap}
+.tag{font-size:10px;padding:2px 6px;border-radius:4px;font-weight:600}
+.tag-code{background:#EAE8FF;color:#4338CA}
+.tag-design{background:#FEF3C7;color:#92400E}
+.tag-config{background:#D1FAE5;color:#065F46}
+.tag-ia{background:#F3E8FF;color:#6B21A8}
+.tag-critical{background:#FEE2E2;color:#991B1B}
+.tag-ux{background:#FFF0F3;color:#9D174D}
+.tag-marketing{background:#ECFDF5;color:#065F46}
+.tag-collab{background:#FFF7ED;color:#9A3412}
+.tk-dur{font-size:10px;color:var(--text-muted);display:flex;align-items:center;gap:3px;white-space:nowrap}
+.tk-dif{font-size:10px;padding:1px 6px;border-radius:4px;font-weight:600}
+.dif-1{background:#D1FAE5;color:#065F46}
+.dif-2{background:#FEF3C7;color:#92400E}
+.dif-3{background:#FEE2E2;color:#991B1B}
+.tk-extra{display:none;padding:0 9px 8px 33px}
+.tk-note{font-size:11px;color:var(--text-sec);line-height:1.5;background:var(--bg-ter);padding:7px 10px;border-radius:var(--r-md);border-left:2px solid var(--border-med)}
+.tk-tip{font-size:10px;color:var(--brand);margin-top:5px;display:flex;align-items:flex-start;gap:5px;line-height:1.4}
+.expand-btn{font-size:10px;color:var(--text-muted);cursor:pointer;margin-left:auto;padding:1px 6px;border-radius:4px;border:.5px solid var(--border);background:var(--bg);font-family:var(--font);transition:all .13s;flex-shrink:0}
+.expand-btn:hover{background:var(--bg-sec)}
+
+/* RESOURCES */
+.rs{padding:10px 14px;background:var(--bg-sec);border-top:.5px solid var(--border)}
+.rl{font-size:10px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.ra-wrap{display:flex;flex-wrap:wrap;gap:5px}
+.ra{font-size:11px;padding:4px 10px;border-radius:99px;border:.5px solid var(--border-med);color:var(--text);text-decoration:none;background:var(--bg);transition:background .13s}
+.ra:hover{background:var(--bg-ter)}
+
+@media(max-width:640px){
+  .stats{grid-template-columns:repeat(3,1fr)}
+  .pi{grid-template-columns:repeat(2,1fr)}
+  .ic+.ic{border-left:none}
+  .ic:nth-child(odd){border-top:.5px solid var(--border)}
+}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <h1>LearnCraft — Plan de développement complet</h1>
+  <p>16 mars → 1er septembre 2026 &nbsp;·&nbsp; 8 phases &nbsp;·&nbsp; 24 semaines effectives &nbsp;·&nbsp; Vacances bloquées : 8–22 juillet</p>
+  <div class="pw"><div class="pf" id="gBar" style="width:0%"></div></div>
+  <div class="cd">
+    <span id="gPct">0 tâches complétées</span>
+    <span class="cb cb-w" id="dLeft">169 jours restants</span>
+    <span class="cb cb-w" id="gTime">— h estimées restantes</span>
+    <span class="cb cb-r">🏖 Vacances : 8–22 juil.</span>
+    <span class="cb cb-g">🚀 Lancement : 1 sept. 2026</span>
+    <span id="syncStatus" style="font-size:11px;color:var(--text-muted);margin-left:4px">⟳ Chargement...</span>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="sn" id="sDone" style="color:#10B981">0</div><div class="sl">complétées</div></div>
+  <div class="stat"><div class="sn" id="sTotal">—</div><div class="sl">tâches total</div></div>
+  <div class="stat"><div class="sn" id="sTotalH">—</div><div class="sl">heures estim.</div></div>
+  <div class="stat"><div class="sn">8</div><div class="sl">phases</div></div>
+  <div class="stat"><div class="sn">24</div><div class="sl">sem. effectives</div></div>
+  <div class="stat"><div class="sn" id="sPct">0%</div><div class="sl">progression</div></div>
+</div>
+
+<div class="tl-wrap">
+  <div class="tl-mo">
+    <div class="tl-m">Mars</div><div class="tl-m">Avril</div><div class="tl-m">Mai</div>
+    <div class="tl-m">Juin</div><div class="tl-m">Juillet</div><div class="tl-m">Août</div><div class="tl-m">Sept.</div>
+  </div>
+  <div class="tl-tr">
+    <div class="tl-s" style="background:#EC4899;flex:2">Ph.0 Design</div>
+    <div class="tl-s" style="background:#5B4FE8;flex:2">Ph.1–2 Setup</div>
+    <div class="tl-s" style="background:#F59E0B;flex:4">Ph.3–4 Code</div>
+    <div class="tl-s" style="background:#EF4444;flex:3">Ph.5 Beta</div>
+    <div class="tl-s tl-v" style="flex:1.5">🏖</div>
+    <div class="tl-s" style="background:#0EA5E9;flex:2">Ph.6 Mktg</div>
+    <div class="tl-s" style="background:#10B981;flex:1.5">Ph.7 🚀</div>
+  </div>
+</div>
+
+<div class="fbar">
+  <button class="fb on" onclick="sf('all',this)">Tout</button>
+  <button class="fb" onclick="sf('code',this)">Code</button>
+  <button class="fb" onclick="sf('config',this)">Config</button>
+  <button class="fb" onclick="sf('design',this)">Design</button>
+  <button class="fb" onclick="sf('ux',this)">UX</button>
+  <button class="fb" onclick="sf('ia',this)">IA</button>
+  <button class="fb" onclick="sf('marketing',this)">Marketing</button>
+  <button class="fb" onclick="sf('collab',this)">Collab</button>
+  <button class="fb" onclick="sf('critical',this)">Critique</button>
+</div>
+
+<div id="root"></div>
+
+<script>
+// dur = durée estimée en minutes, dif = 1(facile)/2(moyen)/3(difficile)
+// note = contexte/conseil, tip = astuce Cursor
+const P=[
+{id:'p0',title:'Phase 0 — Idéation, MVP & Design System',color:'#EC4899',status:'active',start:'16 mars',end:'29 mars',dl:'29 mars 2026',weeks:'Sem. 1–2',vac:false,
+obj:"Sortir avec une vision cristalline : MVP délimité, chaque écran maquetté, design system posé. Aucune ligne de code avant d'avoir terminé cette phase.",
+res:[{l:'Figma',u:'https://figma.com'},{l:'Excalidraw',u:'https://excalidraw.com'},{l:'Coolors',u:'https://coolors.co'},{l:'Mobbin',u:'https://mobbin.com'},{l:'Duolingo (réf.)',u:'https://duolingo.com'}],
+sprints:[
+  {n:'Sprint 0-A',t:'Clarification du MVP',d:'16–19 mars',dl:null,tasks:[
+    {id:'a1',n:'Lister TOUTES les fonctionnalités imaginées sans filtre',tags:['ux','critical'],dur:30,dif:1,note:"Ouvre une note et écris tout ce qui te passe par la tête sans juger. L'objectif c'est de vider ton cerveau.",tip:"Utilise Notion ou même une feuille de papier — aucun outil sophistiqué nécessaire ici."},
+    {id:'a2',n:'Classer chaque feature : MVP / V1.1 / V2 / jamais',tags:['ux','critical'],dur:45,dif:2,note:"Critère MVP : est-ce que l'app a une valeur sans cette feature ? Si oui → pas MVP. Sois brutal.",tip:"Rappelle-toi : moins il y a dans le MVP, plus vite tu peux lancer et avoir des vrais retours."},
+    {id:'a3',n:'Rédiger la définition du MVP en 5 phrases : ce que ça fait, ce que ça ne fait PAS',tags:['ux','critical'],dur:20,dif:1,note:"Ce document te servira de boussole pendant tout le projet. Quand tu doutes, tu le relis.",tip:"Format : 'LearnCraft MVP permet à [persona] de [action] en [temps]. Il ne fait PAS [chose exclue].'"},
+    {id:'a4',n:'Définir les 2 personas : Créateur et Apprenant',tags:['ux'],dur:40,dif:1,note:"Pour chaque persona : prénom fictif, âge, job, problème principal, ce qu'il cherche sur LearnCraft.",tip:""},
+    {id:'a5',n:"Écrire le user journey Créateur : de l'inscription à la formation publiée",tags:['ux','critical'],dur:30,dif:1,note:"Étape par étape, avec les questions/doutes qu'il peut avoir à chaque moment.",tip:""},
+    {id:'a6',n:"Écrire le user journey Apprenant : du lien reçu jusqu'au projet final",tags:['ux'],dur:25,dif:1,note:"Pense à : qu'est-ce qu'il ressent quand il arrive ? Qu'est-ce qui lui donne envie de continuer ?",tip:""},
+    {id:'a7',n:'Lister les 3 actions critiques que chaque persona doit faire en moins de 3 clics',tags:['ux'],dur:15,dif:1,note:"Créateur : créer une formation, publier, voir ses stats. Apprenant : démarrer un chapitre, cocher un exercice, voir son XP.",tip:""},
+    {id:'a8',n:'Geler le périmètre MVP : liste IN / OUT définitive',tags:['ux','critical'],dur:20,dif:1,note:"Colle ce document dans ta documentation. Si quelqu'un (ou toi-même) essaie d'ajouter une feature, tu regardes d'abord cette liste.",tip:""},
+  ]},
+  {n:'Sprint 0-B',t:'Architecture des écrans',d:'20–22 mars',dl:null,tasks:[
+    {id:'b1',n:"Dessiner le sitemap complet : toutes les routes de l'app",tags:['ux','design','critical'],dur:45,dif:2,note:"Les routes principales : /, /login, /register, /dashboard, /dashboard/create/*, /edit/[id], /f/[slug]/*. Dessine les relations entre elles.",tip:"Excalidraw est parfait pour ça — simple et rapide."},
+    {id:'b2',n:'Détailler le contenu de chaque écran (éléments, hiérarchie, actions)',tags:['ux','critical'],dur:60,dif:2,note:"Pour chaque écran : titre de la page, 3-5 éléments principaux dans l'ordre, boutons/actions disponibles.",tip:""},
+    {id:'b3',n:'Écran Landing page : hero, pitch, 3 bénéfices, CTA, social proof',tags:['ux','design'],dur:30,dif:1,note:"La landing est la première impression. Le héro doit répondre en 5 secondes : c'est quoi, pour qui, pourquoi maintenant.",tip:""},
+    {id:'b4',n:'Écrans Auth : inscription + connexion + erreurs',tags:['ux','design'],dur:20,dif:1,note:"Simple : email, mot de passe, bouton. Prénom à l'inscription. Pas de trucs inutiles.",tip:""},
+    {id:'b5',n:'Écran Onboarding créateur : 6 étapes',tags:['ux','design','critical'],dur:45,dif:2,note:"C'est l'écran le plus important pour la rétention. L'utilisateur doit voir la valeur avant même d'avoir fini de s'inscrire.",tip:""},
+    {id:'b6',n:'Écrans création : Étapes 1, 2 et 3 détaillés',tags:['ux','design','critical'],dur:60,dif:2,note:"Étape 3 est la plus complexe : 3 modes de chapitres + cases à cocher + champs optionnels. Prévoir comment ça se plie sur mobile.",tip:""},
+    {id:'b7',n:'Écrans éditeur + publication',tags:['ux','design','critical'],dur:45,dif:2,note:"L'éditeur doit donner l'impression de contrôle sans être écrasant. Drag & drop visible, édition inline, un seul bouton publier.",tip:""},
+    {id:'b8',n:'Écrans apprenant : dashboard, chapitres, chapitre détaillé (4 onglets)',tags:['ux','design','critical'],dur:60,dif:2,note:"Regarde les screenshots de l'app exemple dans tes ressources — c'est exactement ce que tu vises.",tip:""},
+    {id:'b9',n:'Écrans apprenant : projets, ressources, notes',tags:['ux','design'],dur:30,dif:1,note:"",tip:""},
+    {id:'b10',n:'Composants : sidebar, XP bar, animations, modal niveau',tags:['ux','design','critical'],dur:40,dif:2,note:"La sidebar est présente sur chaque page apprenant — elle doit être bien pensée dès le début.",tip:""},
+  ]},
+  {n:'Sprint 0-C',t:'Design System',d:'23–25 mars',dl:null,tasks:[
+    {id:'c1',n:'Palette complète : brand, accent, gold, danger, fonds, textes',tags:['design','critical'],dur:30,dif:1,note:"Utilise Coolors pour générer et valider les contrastes. Vérifie l'accessibilité (ratio min 4.5:1 sur fond sombre).",tip:""},
+    {id:'c2',n:'Typographie : Inter + JetBrains Mono, échelle, line-height',tags:['design'],dur:20,dif:1,note:"Inter pour tout le texte UI. JetBrains Mono uniquement pour les raccourcis clavier et les snippets de code dans les cours.",tip:""},
+    {id:'c3',n:'Spécifier cards, boutons (3 variants), badges (5 états)',tags:['design','critical'],dur:35,dif:2,note:"Pour chaque composant : état normal, hover, actif, désactivé. Les badges : terminé (vert), en cours (violet), verrouillé (gris), intermédiaire (bleu), avancé (rouge).",tip:""},
+    {id:'c4',n:'Barres de progression : 3 types + animations',tags:['design'],dur:20,dif:1,note:"XP (gold), succès (vert), primaire (violet). Animation width transition 0.6s cubic-bezier.",tip:""},
+    {id:'c5',n:'Système spacing + border-radius',tags:['design'],dur:15,dif:1,note:"Spacing : 4/8/12/16/20/24/32px. Radius : 8px composants, 12px cards, 99px pills.",tip:""},
+    {id:'c6',n:'Variables CSS Tailwind (tailwind.config.ts) + globals.css',tags:['design','code'],dur:25,dif:2,note:"Demande à Cursor de générer ce fichier depuis ta palette — ça lui prend 2 minutes.",tip:"Dans Cursor : 'Génère tailwind.config.ts avec ces couleurs : [coller ta palette]'"},
+    {id:'c7',n:'Règles thème sombre vs clair',tags:['design'],dur:20,dif:1,note:"Liste les variables qui changent entre les deux thèmes. Le thème sombre est le défaut.",tip:""},
+  ]},
+  {n:'Sprint 0-D',t:'Maquettes & Validation',d:'26–29 mars',dl:'29 mars — DEADLINE Phase 0',tasks:[
+    {id:'d1',n:'Wireframes Excalidraw : 5 écrans critiques',tags:['ux','design','critical'],dur:60,dif:2,note:"Les 5 à prioriser : dashboard apprenant, création étape 3, chapitre 4 onglets, éditeur, projets finaux.",tip:"Ne cherche pas à faire beau — seulement les boîtes et les contenus. La beauté vient après."},
+    {id:'d2',n:'Maquette Figma HF : dashboard apprenant + chapitre',tags:['design','critical'],dur:120,dif:3,note:"Utilise les variables de ton design system. Ces 2 écrans sont les plus représentatifs du produit.",tip:""},
+    {id:'d3',n:'Maquette Figma HF : formulaire de création 3 écrans',tags:['design','critical'],dur:90,dif:3,note:"L'enchaînement des 3 écrans doit être fluide. Montrer la barre de progression en haut.",tip:""},
+    {id:'d4',n:'Validation flux complet : parcourir comme un vrai utilisateur',tags:['ux','critical'],dur:30,dif:1,note:"Prends chaque maquette et joue le rôle d'un créateur qui découvre l'app pour la première fois. Note chaque question/blocage.",tip:""},
+    {id:'d5',n:'Identifier 3 frictions créateur + solutions',tags:['ux'],dur:20,dif:1,note:"Exemples typiques : 'Je ne sais pas combien de ressources ajouter', 'Je ne comprends pas le mode Semi-auto', 'Le loader me fait peur'.",tip:""},
+    {id:'d6',n:'Identifier 3 décrochages apprenant + solutions',tags:['ux'],dur:20,dif:1,note:"Exemples : 'Le module est trop long', 'L'exercice n'est pas clair', 'Je ne vois pas ma progression'.",tip:""},
+    {id:'d7',n:'Microcopy : chargement, tooltips, erreurs, états vides',tags:['ux','design'],dur:40,dif:1,note:"État vide dashboard : 'Tu n'as pas encore de formation. Crée la tienne en 5 minutes →'. Chaque état vide doit avoir une action.",tip:""},
+    {id:'d8',n:'Relire le flow avec une personne externe',tags:['ux'],dur:45,dif:1,note:"Note tout ce qu'elle dit, même les petites choses. Les choses 'évidentes' pour toi ne le sont pas pour elle.",tip:""},
+  ]},
+]},
+
+{id:'p1',title:'Phase 1 — Fondations & Setup',color:'#5B4FE8',status:'todo',start:'30 mars',end:'12 avril',dl:'12 avril 2026',weeks:'Sem. 3–4',vac:false,
+obj:"Next.js opérationnel en local, Supabase connecté, types TypeScript créés, wrappers lib/ fonctionnels. Tu peux appeler Claude API depuis le code à la fin de cette phase.",
+res:[{l:'nodejs.org',u:'https://nodejs.org'},{l:'Next.js docs',u:'https://nextjs.org/docs'},{l:'Supabase',u:'https://supabase.com'},{l:'Anthropic console',u:'https://console.anthropic.com'},{l:'shadcn/ui',u:'https://ui.shadcn.com'}],
+sprints:[
+  {n:'Sprint 1',t:'Environnement de développement',d:'30 mars – 3 avril',dl:null,tasks:[
+    {id:'t1',n:'Installer Node.js LTS — vérifier avec node --version',tags:['config'],dur:10,dif:1,note:"Va sur nodejs.org, télécharge la version LTS (pas Current). Redémarre le terminal après installation.",tip:""},
+    {id:'t2',n:'Initialiser Next.js 14 avec TypeScript + Tailwind + App Router',tags:['config','critical'],dur:15,dif:1,note:"Commande exacte : npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir=false --import-alias='@/*' --use-npm",tip:"Colle la commande telle quelle dans le terminal Cursor. Réponds 'No' à src/ directory, 'Yes' à App Router."},
+    {id:'t3',n:'Installer toutes les dépendances npm',tags:['config'],dur:10,dif:1,note:"npm install @anthropic-ai/sdk @supabase/supabase-js @supabase/ssr stripe youtube-transcript pdf-parse cheerio zod resend dnd-kit",tip:"Si une dépendance échoue, installe-les une par une pour isoler l'erreur."},
+    {id:'t4',n:'Initialiser shadcn/ui + composants de base',tags:['config','design'],dur:10,dif:1,note:"npx shadcn@latest init — puis: npx shadcn@latest add button input label card tabs progress badge dialog sheet toast separator",tip:""},
+    {id:'t5',n:'Placer .cursorrules à la racine + vérifier que Cursor le lit',tags:['config'],dur:5,dif:1,note:"Renommer le fichier texte en .cursorrules (avec le point, sans extension). Sur Windows tu peux ne pas le voir mais il existe.",tip:"Dans Cursor, ouvre le chat (Ctrl+L) et demande : 'Résume les règles du projet depuis .cursorrules'"},
+    {id:'t6',n:'Créer .env.local avec toutes les variables',tags:['config','critical'],dur:15,dif:1,note:"ANTHROPIC_API_KEY, NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY, NEXT_PUBLIC_APP_URL=http://localhost:3000",tip:"Ce fichier ne doit JAMAIS être partagé ni mis sur GitHub. Vérifie que .gitignore l'inclut."},
+    {id:'t7',n:'tailwind.config.ts avec variables du design system',tags:['design','config'],dur:20,dif:2,note:"Ajouter les couleurs brand, gold, accent dans la section theme.extend.colors.",tip:"Dans Cursor : 'Ajoute ces couleurs dans tailwind.config.ts : brand:#5B4FE8, accent:#10B981, gold:#F59E0B'"},
+    {id:'t8',n:'app/globals.css avec les variables CSS',tags:['design','code'],dur:15,dif:1,note:"Variables CSS pour le fond sombre, les textes, les bordures, et le switch thème clair/sombre.",tip:""},
+  ]},
+  {n:'Sprint 2',t:'Supabase + Types + Lib',d:'4–12 avril',dl:'12 avril — DEADLINE fondations',tasks:[
+    {id:'t9',n:'Créer le projet Supabase (région Paris)',tags:['config','critical'],dur:10,dif:1,note:"supabase.com → New project → Région West EU (Paris). Note le mot de passe de la BDD.",tip:""},
+    {id:'t10',n:'Exécuter schema.sql dans Supabase SQL Editor',tags:['config','critical'],dur:10,dif:1,note:"Copie-colle le contenu de supabase/schema.sql dans SQL Editor → Run. Tu dois voir 'Success. No rows returned'.",tip:"Si une table existe déjà, Supabase retourne une erreur. Supprime la table d'abord ou ajoute IF NOT EXISTS."},
+    {id:'t11',n:'Remplir les clés Supabase + Anthropic dans .env.local',tags:['config'],dur:10,dif:1,note:"Settings → API dans Supabase pour les 3 clés. console.anthropic.com pour la clé Anthropic.",tip:""},
+    {id:'t12',n:'types/formation.ts avec tous les types TypeScript',tags:['code'],dur:30,dif:2,note:"Ce fichier est la référence centrale de tout le projet. Cursor peut le générer depuis .cursorrules.",tip:"Dans Cursor : 'Crée types/formation.ts avec tous les types définis dans .cursorrules'"},
+    {id:'t13',n:'lib/supabase.ts (navigateur) + lib/supabase-server.ts (serveur)',tags:['code'],dur:20,dif:2,note:"2 clients différents : createBrowserClient pour les composants React, createServerClient pour les API Routes.",tip:"Dans Cursor : 'Crée lib/supabase.ts et lib/supabase-server.ts selon les règles de .cursorrules'"},
+    {id:'t14',n:'lib/claude.ts — callClaude() + callClaudeLight()',tags:['code','ia'],dur:20,dif:2,note:"callClaude : max_tokens 8096 pour la génération complète. callClaudeLight : max_tokens 512 pour le rôle expert.",tip:"Cursor peut générer ce fichier depuis .cursorrules — il est entièrement défini dedans."},
+    {id:'t15',n:'lib/buildPrompt.ts — les 8 blocs de prompt',tags:['code','ia','critical'],dur:45,dif:3,note:"C'est le fichier le plus critique de tout le projet. Il détermine la qualité des formations générées. Teste-le soigneusement.",tip:"Cursor peut le générer depuis .cursorrules. Vérifie que chaque bloc est bien conditionnel (if/else selon config)."},
+    {id:'t16',n:'lib/detectFormationType.ts — pré-cochage automatique',tags:['code','ia'],dur:20,dif:2,note:"Détecte si le sujet est un logiciel (Premiere, Python...) ou un soft skill (dessin, communication...) et pré-coche les éléments correspondants.",tip:""},
+    {id:'t17',n:'Vérifier que npm run dev tourne sans erreur',tags:['config'],dur:10,dif:1,note:"Si des erreurs TypeScript apparaissent, corrige-les une par une. Ne passe pas à la suite avec des erreurs.",tip:""},
+  ]},
+]},
+
+{id:'p2',title:'Phase 2 — Auth & Landing page',color:'#10B981',status:'todo',start:'13 avril',end:'26 avril',dl:'26 avril 2026',weeks:'Sem. 5–6',vac:false,
+obj:"Inscription, connexion, dashboard de base. Landing page déployée sur Vercel avec URL publique. L'objectif est d'avoir une URL réelle le plus tôt possible.",
+res:[{l:'Supabase Auth',u:'https://supabase.com/docs/guides/auth'},{l:'Next.js middleware',u:'https://nextjs.org/docs/app/building-your-application/routing/middleware'},{l:'Vercel',u:'https://vercel.com'}],
+sprints:[
+  {n:'Sprint 3',t:'Auth + Dashboard créateur',d:'13–19 avril',dl:null,tasks:[
+    {id:'t18',n:'Landing page : hero + pitch + 3 bénéfices + CTA + footer',tags:['code','design','marketing'],dur:90,dif:2,note:"Copie le contenu depuis ta maquette Figma. Le héro = une seule phrase percutante + un sous-titre + un bouton 'Créer ma première formation'.",tip:"Dans Cursor : 'Crée app/page.tsx : landing page avec [contenu maquette]'. Le style vient de ton design system."},
+    {id:'t19',n:'Pages login + register avec formulaires',tags:['code','design'],dur:60,dif:2,note:"Utilise les composants shadcn/ui : Input, Button, Label. Gestion d'erreurs : afficher un message rouge sous le champ concerné.",tip:""},
+    {id:'t20',n:'Connecter Supabase Auth (signInWithPassword + signUp)',tags:['code','critical'],dur:30,dif:2,note:"Après signUp, Supabase envoie un email de confirmation — l'utilisateur doit cliquer le lien avant de pouvoir se connecter.",tip:""},
+    {id:'t21',n:'Trigger Supabase : créer le profil automatiquement après inscription',tags:['config','critical'],dur:20,dif:2,note:"Dans Supabase → Database → Functions : créer une fonction handle_new_user() qui insère dans profiles. Puis Database → Triggers → after INSERT on auth.users.",tip:"Cursor peut générer la fonction SQL si tu lui demandes."},
+    {id:'t22',n:'middleware.ts : rediriger /dashboard → /login si non connecté',tags:['code','critical'],dur:20,dif:2,note:"Le middleware s'exécute avant chaque requête. Il vérifie la session Supabase et redirige si absente.",tip:""},
+  ]},
+  {n:'Sprint 4',t:'Dashboard + Déploiement',d:'20–26 avril',dl:'26 avril — DEADLINE auth',tasks:[
+    {id:'t23',n:'app/dashboard/layout.tsx : sidebar + navigation',tags:['code','design'],dur:60,dif:2,note:"Liens : Mes formations, Créer une formation, Stats, Profil, Déconnexion.",tip:""},
+    {id:'t24',n:'app/dashboard/page.tsx : liste formations + bouton créer',tags:['code','design'],dur:40,dif:2,note:"État vide : illustration + message encourageant + CTA bien visible. Afficher les formations en cards avec titre, date, nb apprenants.",tip:""},
+    {id:'t25',n:'Déployer sur Vercel — URL publique learncraft.app',tags:['config','critical','marketing'],dur:30,dif:2,note:"Connecter le repo GitHub à Vercel. Ajouter les variables d'environnement de prod dans Vercel Dashboard → Settings → Environment Variables.",tip:"Déploie tôt — même si c'est vide. Avoir une URL réelle motive et te permet de partager."},
+    {id:'t26',n:'Configurer le domaine learncraft.app',tags:['config'],dur:20,dif:2,note:"Acheter le domaine si pas encore fait (~10€/an). Vercel → Settings → Domains → Add.",tip:""},
+    {id:'t27',n:'Test flux complet : inscription → email → connexion → dashboard',tags:['config'],dur:15,dif:1,note:"Teste avec une vraie adresse email (pas une adresse temporaire). Vérifie que le mail arrive bien.",tip:""},
+  ]},
+]},
+
+{id:'p3',title:'Phase 3 — Création de formation (cœur du produit)',color:'#F59E0B',status:'todo',start:'27 avril',end:'24 mai',dl:'24 mai 2026',weeks:'Sem. 7–10',vac:false,
+obj:"Le créateur passe les 3 écrans et l'IA génère une vraie formation JSON complète sauvegardée en base. C'est la fonctionnalité principale — tout le reste en dépend.",
+res:[{l:'Claude API',u:'https://docs.anthropic.com/en/api/messages'},{l:'youtube-transcript',u:'https://www.npmjs.com/package/youtube-transcript'},{l:'pdf-parse',u:'https://www.npmjs.com/package/pdf-parse'},{l:'Zod',u:'https://zod.dev'},{l:'Thunder Client',u:'https://thunderclient.com'}],
+sprints:[
+  {n:'Sprint 5',t:"APIs d'extraction",d:'27 avril – 3 mai',dl:null,tasks:[
+    {id:'t28',n:"/api/extract : YouTube + PDF + web scraping",tags:['code','ia','critical'],dur:120,dif:3,note:"3 cas distincts : YouTube → youtube-transcript npm, PDF → récupérer depuis Supabase Storage + pdf-parse, Web → fetch + cheerio extrait p/h1/h2/h3/li.",tip:"Demande à Cursor de créer les 3 fonctions extract séparément, puis de les assembler dans la route."},
+    {id:'t29',n:'Cache 24h dans ressources_cache pour YouTube',tags:['code'],dur:30,dif:2,note:"Avant chaque extraction YouTube : vérifier si l'URL est dans ressources_cache et si created_at < 24h. Si oui, retourner le cache.",tip:""},
+    {id:'t30',n:"Test extraction avec une vraie vidéo + un vrai PDF",tags:['config'],dur:20,dif:1,note:"Utilise Thunder Client (extension VS Code) pour envoyer le POST /api/extract. Vérifie que le contenu extrait est cohérent.",tip:""},
+    {id:'t31',n:'Gestion erreurs : vidéo sans transcript, PDF protégé, site inaccessible',tags:['code'],dur:30,dif:2,note:"Chaque erreur doit retourner un message clair à l'utilisateur, pas un crash. Ex: 'Cette vidéo n'a pas de sous-titres disponibles'.",tip:""},
+  ]},
+  {n:'Sprint 6',t:'APIs de génération IA',d:'4–10 mai',dl:null,tasks:[
+    {id:'t32',n:'/api/generate-role : rôle expert en 2-3 phrases',tags:['code','ia','critical'],dur:30,dif:2,note:"Appel Claude léger (callClaudeLight). Déclenché dès que l'Écran 1 est validé, en arrière-plan pendant que l'user passe à l'Écran 2.",tip:""},
+    {id:'t33',n:'/api/generate : buildPrompt + callClaude + parse JSON + save',tags:['code','ia','critical'],dur:90,dif:3,note:"C'est la route la plus complexe. Étapes : vérif quota → extractContent → buildPrompt → callClaude → JSON.parse → generateSlug → supabase.insert.",tip:"Implémente et teste chaque étape séparément avant de les assembler."},
+    {id:'t34',n:'Vérification quota FREE = 1 gen/mois → 403 si dépassé',tags:['code'],dur:20,dif:1,note:"Vérifier profile.generations_ce_mois >= 1 && profile.plan === 'free'. Retourner { error: 'Quota dépassé', upgrade: true }.",tip:""},
+    {id:'t35',n:'Génération slug unique depuis le titre',tags:['code'],dur:15,dif:1,note:"Slugify le titre + vérifier en BDD si le slug existe déjà. Si oui, ajouter -2, -3, etc.",tip:""},
+    {id:'t36',n:'Test génération complète depuis Thunder Client',tags:['config','critical'],dur:30,dif:1,note:"Envoie une vraie requête avec un sujet, une vidéo YouTube réelle. Vérifie que le JSON retourné est valide et complet.",tip:"Garde ce JSON de test — tu en auras besoin pour tester l'interface apprenant."},
+  ]},
+  {n:'Sprint 7',t:'Formulaire création (3 écrans)',d:'11–17 mai',dl:null,tasks:[
+    {id:'t37',n:'Écran 1 : sujet + niveau + durée + langue',tags:['code','design'],dur:60,dif:2,note:"Sélecteurs visuels (boutons cliquables, pas des select HTML). Appel /api/generate-role en arrière-plan dès validation.",tip:""},
+    {id:'t38',n:'Écran 2 : ResourceUploader — YouTube/PDF/texte',tags:['code','design'],dur:90,dif:3,note:"Pour chaque ressource ajoutée : afficher une card avec l'URL, un loader pendant l'extraction, puis un résumé du contenu extrait.",tip:""},
+    {id:'t39',n:'Écran 3 : ChapterBuilder + ElementsSelector',tags:['code','design','critical'],dur:120,dif:3,note:"ChapterBuilder : 3 onglets (Manuel / Semi-auto / Auto). ElementsSelector : grille de cases à cocher pré-cochées selon detectFormationType().",tip:"C'est l'écran le plus complexe du formulaire. Prévoir 2-3h et tester chaque mode séparément."},
+    {id:'t40',n:'Pré-cocher automatiquement avec detectFormationType()',tags:['code','ia'],dur:20,dif:1,note:"Appeler detectFormationType(sujet) dès que l'Écran 1 est validé et stocker le résultat dans le state React.",tip:""},
+    {id:'t41',n:'Champs optionnels : projets finaux + ressources bonus',tags:['code','design'],dur:30,dif:1,note:"Dans un accordéon 'Options avancées' pour ne pas encombrer l'Écran 3. Champs texte libre.",tip:""},
+  ]},
+  {n:'Sprint 8',t:'Génération + Éditeur',d:'18–24 mai',dl:'24 mai — DEADLINE cœur du produit',tasks:[
+    {id:'t42',n:'Écran génération : loader 3 phases animé',tags:['code','design'],dur:45,dif:2,note:"Phase 1 (0-10s) : '🔍 Analyse de tes ressources...', Phase 2 (10-40s) : '🧠 Génération en cours...', Phase 3 (40-60s) : '✨ Finalisation...'. Messages rotatifs entre chaque phase.",tip:""},
+    {id:'t43',n:'Redirect vers éditeur après génération réussie',tags:['code'],dur:15,dif:1,note:"router.push('/edit/' + formation.id) après la réponse. En cas d'erreur, afficher le message et un bouton 'Réessayer'.",tip:""},
+    {id:'t44',n:'app/edit/[id] : drag & drop modules + édition inline',tags:['code','design','critical'],dur:150,dif:3,note:"Utilise @dnd-kit/sortable pour le drag & drop. Édition inline sur clic du titre/contenu/XP. Autosave à chaque modification (debounce 1s).",tip:"Demande à Cursor : 'Implémente le drag & drop avec dnd-kit pour une liste de modules'. C'est un pattern documenté."},
+    {id:'t45',n:'Bouton "Régénérer ce module" avec raison optionnelle',tags:['code','ia'],dur:30,dif:2,note:"Un champ texte optionnel : 'Raison' (ex: 'Trop difficile', 'Plus d'exercices'). Appel à /api/generate avec le prompt ciblé du module.",tip:""},
+    {id:'t46',n:'Panel couleurs formation',tags:['code','design'],dur:30,dif:2,note:"3 color pickers (primary, secondary, accent). Prévisualisation en temps réel dans un mini-aperçu à droite.",tip:""},
+    {id:'t47',n:'Test bout en bout : formulaire → génération → éditeur',tags:['config','critical'],dur:30,dif:1,note:"Parcours complet avec une vraie vidéo YouTube. Si quelque chose casse, note l'étape exacte et le message d'erreur.",tip:""},
+  ]},
+]},
+
+{id:'p4',title:'Phase 4 — Interface Apprenant & Publication',color:'#8B5CF6',status:'todo',start:'25 mai',end:'14 juin',dl:'14 juin 2026',weeks:'Sem. 11–13',vac:false,
+obj:"L'apprenant accède à /f/[slug], voit un dashboard gamifié, navigue dans les chapitres avec 4 onglets, accumule des XP, monte en niveau. Stripe pour les formations payantes.",
+res:[{l:'Framer Motion',u:'https://www.framer.com/motion'},{l:'canvas-confetti',u:'https://www.npmjs.com/package/canvas-confetti'},{l:'Stripe',u:'https://stripe.com/docs'},{l:'Supabase realtime',u:'https://supabase.com/docs/guides/realtime'}],
+sprints:[
+  {n:'Sprint 9',t:'Layout + Dashboard apprenant',d:'25–31 mai',dl:null,tasks:[
+    {id:'t48',n:'f/[slug]/layout.tsx : sidebar (nav + chapitres + XP bas)',tags:['code','design','critical'],dur:90,dif:3,note:"Sidebar fixe 220px. En bas : avatar + niveau + XP total + barre vers prochain niveau. La liste des chapitres scrolle si nécessaire.",tip:""},
+    {id:'t49',n:'f/[slug]/page.tsx : dashboard (4 cards + barre niveau + objectif)',tags:['code','design'],dur:90,dif:2,note:"4 cards : progression %, XP total, vidéos vues, exercices complétés. Barre de niveau avec nom du niveau et % vers le suivant.",tip:""},
+    {id:'t50',n:'Composant LevelBar avec animation',tags:['code','design'],dur:40,dif:2,note:"Utilise Framer Motion pour l'animation de remplissage. Quand le niveau monte : animation spéciale + confetti (canvas-confetti).",tip:""},
+    {id:'t51',n:'/api/progress : save progression + XP en base',tags:['code','critical'],dur:30,dif:2,note:"Actions : module_complete, exercice_complete, quiz_complete. Chaque action incrémente xp_total et ajoute à modules_termines.",tip:""},
+    {id:'t52',n:'Progression par chapitre : barres individuelles + badges statut',tags:['code','design'],dur:45,dif:2,note:"3 états : terminé (checkmark vert), en cours (barre violette), verrouillé (numéro gris, cursor:default).",tip:""},
+  ]},
+  {n:'Sprint 10',t:'Pages chapitres (4 onglets)',d:'1–7 juin',dl:null,tasks:[
+    {id:'t53',n:'f/[slug]/chapitres/page.tsx : liste chapitres avec statuts',tags:['code','design'],dur:60,dif:2,note:"Chaque card : emoji + titre + durée + XP + nb vidéos + barre progression + badge statut. Clic → chapitre détaillé.",tip:""},
+    {id:'t54',n:'f/[slug]/chapitres/[id]/page.tsx : 4 onglets',tags:['code','design','critical'],dur:120,dif:3,note:"Utilise le composant Tabs de shadcn/ui. L'onglet actif est mémorisé dans le state. Contenu de chaque onglet dans des composants séparés.",tip:""},
+    {id:'t55',n:'Onglet Cours : concept clé + sous-concepts + tutoriel + astuces',tags:['code','design'],dur:60,dif:2,note:"Concept clé dans une card mise en avant. Sous-concepts en grille de cards. Tutoriel avec numéros. Astuces avec étoile dorée.",tip:""},
+    {id:'t56',n:'Onglet Exercices : checklist critères + XP',tags:['code'],dur:45,dif:2,note:"Chaque critère coché → appel /api/progress → animation XP. Quand tous les critères sont cochés : module marqué comme terminé.",tip:""},
+    {id:'t57',n:'Onglet Notes : éditeur texte autosave',tags:['code'],dur:30,dif:2,note:"Textarea simple avec debounce 1s. Sauvegarde dans progressions.notes[module_id]. Confirmation visuelle de sauvegarde.",tip:""},
+    {id:'t58',n:'Animation +XP flottant quand module complété',tags:['code','design'],dur:30,dif:2,note:"Un div positionné absolute avec '+100 XP' en texte doré, animation translateY(-40px) + fadeOut sur 1.2s. Simple mais efficace.",tip:""},
+  ]},
+  {n:'Sprint 11',t:'Projets + Ressources + Publication Stripe',d:'8–14 juin',dl:'14 juin — DEADLINE interface',tasks:[
+    {id:'t59',n:'f/[slug]/projets/page.tsx : projets côte à côte',tags:['code','design'],dur:60,dif:2,note:"Cards avec badge niveau (Intermédiaire / Avancé). Checklist étapes cochables. Barre avancement = steps cochées / total steps.",tip:""},
+    {id:'t60',n:'f/[slug]/ressources/page.tsx : grille catégorisée',tags:['code','design'],dur:45,dif:1,note:"Catégories générées par Claude dans ressources_globales. Cards avec nom + description + lien externe.",tip:""},
+    {id:'t61',n:'f/[slug]/notes/page.tsx : agrégation toutes notes',tags:['code','design'],dur:30,dif:1,note:"Pour chaque chapitre ayant une note : afficher le titre du chapitre + la note en dessous.",tip:""},
+    {id:'t62',n:'Page publication créateur : toggle + prix + lien',tags:['code','design','critical'],dur:60,dif:2,note:"Toggle is_public (public/privé). Toggle is_payant (gratuit/payant) avec champ prix conditionnel. Afficher le lien /f/[slug] avec bouton copier.",tip:""},
+    {id:'t63',n:'Intégrer Stripe Checkout pour formations payantes',tags:['code','critical'],dur:90,dif:3,note:"Créer une session Stripe Checkout côté serveur. Rediriger l'apprenant vers la page Stripe. Après paiement : webhook confirme et débloque l'accès.",tip:"Commence par tester en mode test Stripe — utilise la carte 4242 4242 4242 4242."},
+    {id:'t64',n:'Webhook Stripe : confirmer paiement + débloquer accès',tags:['code'],dur:45,dif:3,note:"Écouter l'événement checkout.session.completed. Vérifier la signature Stripe. Créer l'entrée progressions pour cet apprenant.",tip:""},
+    {id:'t65',n:'Test parcours complet apprenant sur une vraie formation',tags:['config','critical'],dur:30,dif:1,note:"Utilise le JSON de formation que tu as gardé au Sprint 6. Vérifie que chaque onglet fonctionne et que les XP sont bien comptabilisés.",tip:""},
+  ]},
+]},
+
+{id:'p5',title:'Phase 5 — Beta privée & Corrections',color:'#EF4444',status:'todo',start:'15 juin',end:'7 juillet',dl:'7 juillet 2026',weeks:'Sem. 14–17',vac:false,
+obj:"10–20 beta-testeurs accèdent au produit, remontent des retours concrets. Bugs critiques corrigés. Tout est stable avant les vacances du 8 juillet.",
+res:[{l:'Tally',u:'https://tally.so'},{l:'Hotjar',u:'https://hotjar.com'},{l:'Linear',u:'https://linear.app'},{l:'Resend',u:'https://resend.com'}],
+sprints:[
+  {n:'Sprint 12',t:'Finitions avant beta',d:'15–21 juin',dl:null,tasks:[
+    {id:'u1',n:'Emails Resend : bienvenue, accès formation, relance J+1 et J+3',tags:['code','marketing'],dur:90,dif:2,note:"Email bienvenue : envoyé après confirmation email. Email accès formation : quand un créateur partage avec l'apprenant. Relances : si pas de formation créée.",tip:""},
+    {id:'u2',n:'Analytics créateur : dashboard stats (taux complétion, XP moyen, heatmap)',tags:['code','design'],dur:120,dif:3,note:"Requêtes SQL sur analytics_events. Graphique en barres pour la progression par chapitre. Points de décrochage mis en rouge.",tip:""},
+    {id:'u3',n:"Messages d'erreur clairs sur tous les cas limites",tags:['code','ux'],dur:45,dif:1,note:"Quota dépassé, génération échouée, vidéo sans transcript, PDF trop grand, slug déjà pris. Chaque erreur a un message humain.",tip:""},
+    {id:'u4',n:'Tooltips in-app : dashboard, éditeur, drag&drop, publication',tags:['code','ux'],dur:45,dif:1,note:"Apparaissent une seule fois (stocké dans localStorage). Simple span avec title ou composant Tooltip de shadcn/ui.",tip:""},
+    {id:'u5',n:'Responsive mobile : pages apprenant sur téléphone',tags:['code','design'],dur:60,dif:2,note:"Les apprenants accèdent souvent sur mobile. La sidebar devient un menu hamburger. Les 4 onglets deviennent scrollables.",tip:""},
+    {id:'u6',n:'Test production complet inscription → création → publication → achat',tags:['config','critical'],dur:30,dif:1,note:"Faire le parcours complet avec une vraie carte Stripe en mode test. Si quelque chose casse en prod, c'est maintenant qu'on le trouve.",tip:""},
+  ]},
+  {n:'Sprint 13',t:'Beta privée — vague 1',d:'15–28 juin',dl:null,tasks:[
+    {id:'u7',n:'Identifier 10 beta-testeurs créateurs YouTube/TikTok',tags:['collab','marketing','critical'],dur:60,dif:2,note:"Cherche dans la niche formation/productivité/IA. Profils avec 1K–50K abonnés sont les plus accessibles et motivés.",tip:""},
+    {id:'u8',n:'Rédiger le message de recrutement beta',tags:['marketing','collab'],dur:30,dif:1,note:"Max 5 lignes : qui tu es, ce que tu as construit, ce que tu leur demandes (30 min de leur temps), ce qu'ils reçoivent (accès Pro gratuit à vie).",tip:""},
+    {id:'u9',n:'Formulaire feedback Tally (5 questions, 3 min)',tags:['ux','marketing'],dur:20,dif:1,note:"Questions : 1) As-tu pu créer une formation ? 2) Où as-tu bloqué ? 3) Note de 1 à 10. 4) Qu'est-ce qui t'a le plus plu ? 5) Qu'est-ce qui manque ?",tip:""},
+    {id:'u10',n:'Donner accès Pro aux 10 beta-testeurs + les accompagner',tags:['collab','critical'],dur:60,dif:1,note:"Envoie-leur un email personnalisé avec le lien, ton numéro/Discord pour qu'ils puissent te contacter si ça coince.",tip:""},
+    {id:'u11',n:'Installer Hotjar sur les pages clés',tags:['config','ux'],dur:15,dif:1,note:"Pages : /dashboard, /dashboard/create/*, /f/[slug]. Hotjar enregistre les sessions et montre les heatmaps de clics.",tip:""},
+    {id:'u12',n:'Appel vidéo avec 3 beta-testeurs (30 min chacun)',tags:['collab','ux'],dur:90,dif:1,note:"Demande-leur de partager leur écran et d'utiliser l'app devant toi. Note TOUT sans jamais les interrompre pour expliquer.",tip:""},
+  ]},
+  {n:'Sprint 14',t:'Corrections & Beta vague 2',d:'29 juin – 5 juillet',dl:null,tasks:[
+    {id:'u13',n:'Analyser feedbacks : bug bloquant / friction / nice-to-have',tags:['ux','critical'],dur:60,dif:2,note:"Utilise un tableau à 3 colonnes. Un bug bloquant = empêche de finir le parcours. Friction = ralentit. Nice-to-have = peut attendre.",tip:""},
+    {id:'u14',n:'Corriger les 5 bugs critiques remontés',tags:['code','critical'],dur:180,dif:3,note:"Focus uniquement sur les bugs bloquants et les frictions majeures. Résiste à l'envie d'ajouter des features.",tip:""},
+    {id:'u15',n:'Améliorer les 3 points de friction les plus cités',tags:['code','ux'],dur:90,dif:2,note:"Exemple : si 5 personnes sur 10 n'ont pas compris l'Écran 3 → simplifier le mode par défaut.",tip:""},
+    {id:'u16',n:'Beta vague 2 : 10 nouveaux testeurs avec corrections',tags:['collab','marketing'],dur:60,dif:1,note:"Des profils différents de la vague 1 (autre niche). Vérifie que les bugs précédents ne sont plus là.",tip:""},
+    {id:'u17',n:'Documenter ce qui fonctionne bien (pour le marketing)',tags:['marketing'],dur:30,dif:1,note:"Note les citations exactes positives des beta-testeurs — elles deviendront tes témoignages sur la landing page.",tip:""},
+  ]},
+  {n:'Sprint 15',t:'Préparation avant vacances',d:'6–7 juillet',dl:'7 juillet — DEADLINE avant vacances 🏖',tasks:[
+    {id:'u18',n:'Vérifier la stabilité du site',tags:['config','critical'],dur:20,dif:1,note:"Vérifie les logs Vercel : aucune erreur 500 dans les 24h. Vérifie que Supabase est en bonne santé.",tip:""},
+    {id:'u19',n:'Alertes Vercel si le site tombe',tags:['config'],dur:15,dif:1,note:"Vercel → Settings → Notifications. Ajouter ton email pour les alertes de déploiement et d'erreurs.",tip:""},
+    {id:'u20',n:'Rédiger la liste marketing à faire au retour',tags:['marketing'],dur:20,dif:1,note:"Liste précise et priorisée. Tu vas partir l'esprit tranquille et reprendre efficacement le 23 juillet.",tip:""},
+    {id:'u21',n:'Programmer 2 posts de contenu pendant les vacances',tags:['marketing'],dur:45,dif:1,note:"Buffer ou Hootsuite pour programmer. Exemples : stats beta anonymisées, retour d'expérience d'un beta-testeur (avec accord).",tip:""},
+  ]},
+]},
+
+{id:'vac',title:'🏖 Vacances — Pause totale',color:'#374151',status:'blocked',start:'8 juillet',end:'22 juillet',dl:'',weeks:'Sem. 18–19',vac:true,
+obj:"Pause totale. 0 ligne de code. 0 tâche marketing urgente. Les 2 posts programmés se publient automatiquement. Revenir reposé pour le sprint final.",
+res:[],
+sprints:[
+  {n:'',t:'Mode vacances',d:'8–22 juillet',dl:null,tasks:[
+    {id:'v1',n:"NE PAS travailler sur le code ou le marketing",tags:[],dur:0,dif:1,note:"Vraiment. Le projet est stable. Il peut vivre sans toi 15 jours.",tip:""},
+    {id:'v2',n:"Laisser les 2 posts programmés se publier automatiquement",tags:['marketing'],dur:0,dif:1,note:"",tip:""},
+    {id:'v3',n:"Vérifier une seule fois que le site est en ligne (5 min max)",tags:['config'],dur:5,dif:1,note:"",tip:""},
+  ]},
+]},
+
+{id:'p6',title:'Phase 6 — Marketing, Présence & Collaborations',color:'#0EA5E9',status:'todo',start:'23 juillet',end:'16 août',dl:'16 août 2026',weeks:'Sem. 20–23',vac:false,
+obj:"Construire la présence en ligne : Twitter/X, contenu régulier, liste d'attente, partenariats influenceurs. Tout doit être en place avant le sprint de lancement.",
+res:[{l:'Buffer',u:'https://buffer.com'},{l:'Beehiiv',u:'https://beehiiv.com'},{l:'Product Hunt',u:'https://producthunt.com'},{l:'Hunter.io',u:'https://hunter.io'},{l:'Canva',u:'https://canva.com'}],
+sprints:[
+  {n:'Sprint 16',t:'Présence en ligne & Contenu',d:'23 juil. – 2 août',dl:null,tasks:[
+    {id:'m1',n:'Créer et optimiser Twitter/X @learncraft_app',tags:['marketing','critical'],dur:30,dif:1,note:"Bio : 'Je transforme tes ressources en formation complète en 5 min avec l'IA'. Lien vers learncraft.app. Photo de profil propre.",tip:""},
+    {id:'m2',n:'Post "building in public #1" : présenter le projet + chiffres beta',tags:['marketing','critical'],dur:45,dif:1,note:"Format qui marche : 'J'ai passé 4 mois à construire [produit]. Voici ce que j'ai appris : [3 points]. [stats beta]. Lien dans le profil.'",tip:""},
+    {id:'m3',n:'Créer compte TikTok ou Instagram pour contenu court',tags:['marketing'],dur:20,dif:1,note:"Contenu idéal : démos de génération de formations (15-30s). C'est visuellement impressionnant.",tip:""},
+    {id:'m4',n:'Rédiger 10 idées de contenus éducatifs',tags:['marketing'],dur:40,dif:1,note:"Exemples : 'Comment créer une formation en 5 min', 'Pourquoi les formations en ligne ont 13% de complétion', 'Gamification expliquée en 60s'.",tip:""},
+    {id:'m5',n:'Publier 3 posts par semaine (tips + behind the scenes + stats)',tags:['marketing'],dur:90,dif:1,note:"Consacre 30 min le lundi matin pour planifier la semaine. Utilise Buffer pour programmer.",tip:""},
+    {id:'m6',n:'Page liste d\'attente sur la landing (email + compteur)',tags:['code','marketing','critical'],dur:45,dif:2,note:"Un simple formulaire email + compteur 'Déjà X personnes en liste d\'attente'. Stocker dans Supabase ou Beehiiv.",tip:""},
+    {id:'m7',n:'Séquence email liste d\'attente : 3 emails sur 7 jours',tags:['marketing','code'],dur:60,dif:2,note:"Email 1 (J0) : 'Merci ! Voici ce qui t'attend'. Email 2 (J3) : valeur + exemple formation générée. Email 3 (J7) : teasing lancement.",tip:""},
+    {id:'m8',n:'SEO landing page : meta, Open Graph, mots-clés',tags:['marketing','code'],dur:30,dif:1,note:"Title : 'LearnCraft — Créer une formation IA en 5 minutes'. Keywords : créer formation IA, plateforme formation gamifiée.",tip:""},
+    {id:'m9',n:'3 vidéos démo courtes (30–60s)',tags:['marketing','critical'],dur:120,dif:2,note:"Vidéo 1 : génération d'une formation depuis une vidéo YouTube. Vidéo 2 : l'interface apprenant. Vidéo 3 : système XP + niveaux.",tip:""},
+  ]},
+  {n:'Sprint 17',t:'Collaborations & Influenceurs',d:'3–16 août',dl:'16 août — DEADLINE marketing',tasks:[
+    {id:'m10',n:'Identifier 20 créateurs (5K–100K) niche formation/IA',tags:['collab','marketing','critical'],dur:90,dif:1,note:"Recherche Twitter, YouTube, TikTok : 'créer formation', 'formation en ligne', 'IA créateurs'. Note leur email si disponible.",tip:""},
+    {id:'m11',n:'Rédiger le message de collaboration type',tags:['collab','marketing'],dur:30,dif:1,note:"5 lignes max. Personnalise la 1ère phrase (mentionner une de leurs vidéos). Pas de 'je pense que ça pourrait t'intéresser'.",tip:""},
+    {id:'m12',n:'Contacter les 20 créateurs (DM + email)',tags:['collab','critical'],dur:60,dif:1,note:"Envoie et note dans un tableau : date envoi, canal, réponse. Relance après 5 jours si pas de réponse.",tip:""},
+    {id:'m13',n:'Offre partenariat : Pro gratuit + 20% commission récurrente',tags:['collab','marketing'],dur:20,dif:1,note:"Mets par écrit dans un Google Doc partagé, même informel. Protège-toi pour chaque collaboration.",tip:""},
+    {id:'m14',n:'Kit collaboration : 3 posts clés en main + visuels',tags:['collab','marketing'],dur:90,dif:2,note:"3 posts rédigés qu'ils n'ont qu'à copier/coller ou adapter. Visuels Canva en 1080x1080 et 9:16.",tip:""},
+    {id:'m15',n:'Contacter 5 formateurs pour témoignages',tags:['collab','marketing'],dur:30,dif:1,note:"Demande une citation de 1-2 phrases sur leur expérience. Avec leur accord, affiche leur photo et nom sur la landing.",tip:""},
+    {id:'m16',n:'Préparer la page Product Hunt',tags:['marketing','critical'],dur:60,dif:2,note:"Titre (60 chars max), tagline (260 chars), description, 3 screenshots, GIF de démo. Premier commentaire : 'Bonjour PH! Je suis Victor...'",tip:""},
+    {id:'m17',n:'Trouver un hunter Product Hunt avec audience',tags:['collab','marketing'],dur:30,dif:2,note:"Un hunter populaire peut multiplier la visibilité par 5. Cherche dans la communauté IndieHackers ou Twitter.",tip:""},
+    {id:'m18',n:'Préparer posts Reddit : r/SideProject, r/Entrepreneur',tags:['marketing'],dur:45,dif:1,note:"Format Reddit qui marche : 'J'ai passé X mois à construire [produit], voici ce que j'ai appris'. Lien à la fin, pas au début.",tip:""},
+    {id:'m19',n:'Créer compte Indie Hackers + publier la story',tags:['marketing'],dur:45,dif:1,note:"Format : origine de l'idée, parcours, premiers chiffres, leçons. La communauté IH est bienveillante avec les jeunes fondateurs.",tip:""},
+  ]},
+]},
+
+{id:'p7',title:'Phase 7 — Sprint final & Lancement 🚀',color:'#10B981',status:'todo',start:'17 août',end:'1 septembre',dl:'1 septembre 2026 — 🚀 LANCEMENT',weeks:'Sem. 24–26',vac:false,
+obj:"Tout est prêt. On lance. Product Hunt, Reddit, Twitter, influenceurs partenaires, liste d'attente convertie. Objectif : 50 inscriptions dans les 48h, 20 abonnés Pro dans le mois.",
+res:[{l:'Product Hunt',u:'https://producthunt.com'},{l:'Reddit',u:'https://reddit.com'},{l:'Stripe Dashboard',u:'https://dashboard.stripe.com'},{l:'Vercel Analytics',u:'https://vercel.com/analytics'}],
+sprints:[
+  {n:'Sprint 18',t:'Préparation lancement',d:'17–25 août',dl:null,tasks:[
+    {id:'l1',n:'Tests end-to-end en production',tags:['config','critical'],dur:60,dif:1,note:"Faire le parcours complet 3 fois avec des comptes différents. Vérifier la création, le paiement, l'accès apprenant.",tip:""},
+    {id:'l2',n:'Vérifier tous les emails transactionnels en prod',tags:['config'],dur:20,dif:1,note:"Teste les 5 emails : bienvenue, confirmation, accès formation, relance J+1, relance J+3.",tip:""},
+    {id:'l3',n:'Post Twitter de lancement avec GIF démo',tags:['marketing','critical'],dur:60,dif:2,note:"Format : hook fort en 1ère ligne + 4-5 lignes de contenu + GIF de 10s montrant la génération + lien. Rédige-le à l'avance.",tip:""},
+    {id:'l4',n:'Vidéo démo principale (90 secondes)',tags:['marketing','critical'],dur:180,dif:2,note:"Scénario : 1) Tu colles un lien YouTube (10s), 2) Tu paramètres (10s), 3) Loader (5s), 4) Formation générée (20s), 5) Interface apprenant avec XP (30s), 6) CTA (5s).",tip:""},
+    {id:'l5',n:'Briefer les influenceurs partenaires — J-7',tags:['collab','marketing'],dur:30,dif:1,note:"Email avec : date exacte du lancement, heure de publication recommandée, message clé à inclure, lien de tracking.",tip:""},
+    {id:'l6',n:"Email liste d'attente 'le lancement approche' — J-5",tags:['marketing','critical'],dur:30,dif:1,note:"Court : 'Dans 5 jours, LearnCraft ouvre ses portes. Tu es parmi les premiers. Voici ce qui t'attend.'",tip:""},
+    {id:'l7',n:'Tester Stripe en production avec un vrai paiement',tags:['config','critical'],dur:15,dif:1,note:"Crée une formation payante à 1€, achète-la avec ta propre carte. Vérifie que l'accès est débloqué.",tip:""},
+    {id:'l8',n:'Monitoring : alertes si site tombe pendant le lancement',tags:['config'],dur:15,dif:1,note:"Vercel a des alertes intégrées. Ajoute aussi UptimeRobot (gratuit) pour être alerté par SMS si le site est down.",tip:""},
+  ]},
+  {n:'Sprint 19 🚀',t:'LANCEMENT — 1er septembre',d:'26 août – 1 sept.',dl:'1 SEPTEMBRE — 🚀 LANCEMENT',tasks:[
+    {id:'l9',n:'Product Hunt — 9h01 heure française',tags:['marketing','critical'],dur:10,dif:1,note:"L'heure de publication Product Hunt est PST. 9h01 en France = 0h01 PST. Planifie de te lever tôt ou de soumettre la veille au soir.",tip:""},
+    {id:'l10',n:'Post de lancement Twitter/X avec vidéo démo',tags:['marketing','critical'],dur:10,dif:1,note:"Publie exactement en même temps que Product Hunt. Inclus le lien PH dans le post.",tip:""},
+    {id:'l11',n:'Posts Reddit',tags:['marketing','critical'],dur:20,dif:1,note:"Soumets dans r/SideProject, r/Entrepreneur, r/learnprogramming. Espacement : 30 min entre chaque pour éviter le spam.",tip:""},
+    {id:'l12',n:"Email de lancement à toute la liste d'attente",tags:['marketing','critical'],dur:10,dif:1,note:"Sujet : 'LearnCraft est en ligne — tu es parmi les premiers ✨'. Court, avec CTA, avec vidéo démo.",tip:""},
+    {id:'l13',n:'Les influenceurs partenaires publient le même jour',tags:['collab','critical'],dur:0,dif:1,note:"Envoie-leur un rappel le matin. Remercie-les publiquement en les mentionnant.",tip:""},
+    {id:'l14',n:'Répondre à TOUS les commentaires Product Hunt dans les premières heures',tags:['marketing','critical'],dur:120,dif:1,note:"C'est crucial pour l'algorithme PH. Chaque réponse compte. Sois personnel, pas robotique.",tip:""},
+    {id:'l15',n:'Surveiller les inscriptions en temps réel',tags:['marketing'],dur:60,dif:1,note:"Supabase → Table Editor → profiles. Vercel Analytics pour le trafic. Stripe Dashboard pour les paiements.",tip:""},
+    {id:'l16',n:'Partager les chiffres en temps réel sur Twitter',tags:['marketing'],dur:30,dif:1,note:"'1h après le lancement : X inscriptions, X formations créées' — les gens adorent suivre en temps réel.",tip:""},
+    {id:'l17',n:'Contacter personnellement les 10 premiers inscrits',tags:['collab','marketing'],dur:45,dif:1,note:"Un message court et sincère. Demande-leur si ça a bien fonctionné, propose de l'aide.",tip:""},
+    {id:'l18',n:'Post bilan 48h : chiffres + apprentissages',tags:['marketing'],dur:45,dif:1,note:"Format : chiffres bruts + 3 choses apprises + prochain objectif. La transparence crée de la confiance.",tip:""},
+  ]},
+]},
+];
+
+// ─── CONFIG SYNCHRO ──────────────────────────────────────────────────────────
+// Remplace ces 2 valeurs après déploiement sur Vercel
+const API_URL = 'https://learncraft.app/api/roadmap';  // remplace learncraft.app par ton URL Vercel (ex: ton-projet.vercel.app)
+const SECRET  = '328b5c4b6066c9d41822fb05ea73bfbfe705b09d1c0cc0b395207ced40a5cb59';  // même valeur que ROADMAP_SECRET dans .env et Vercel
+
+// ─── STATE ───────────────────────────────────────────────────────────────────
+const TOTAL=P.flatMap(p=>p.sprints.flatMap(s=>s.tasks)).length;
+const TOTAL_H=Math.round(P.flatMap(p=>p.sprints.flatMap(s=>s.tasks)).reduce((acc,t)=>acc+(t.dur||0),0)/60);
+let checked=new Set(JSON.parse(localStorage.getItem('lc-v5')||'[]'));
+let openPhases=new Set(['p0']);
+let filt='all';
+let openTasks=new Set();
+let syncStatus='idle'; // idle | syncing | ok | error | offline
+
+// ─── SYNCHRO ─────────────────────────────────────────────────────────────────
+function setSyncStatus(s,msg=''){
+  syncStatus=s;
+  const el=document.getElementById('syncStatus');
+  if(!el)return;
+  const icons={idle:'',syncing:'⟳ Synchro...',ok:'✓ Synchronisé',error:'⚠ Erreur synchro',offline:'◌ Hors-ligne'};
+  const colors={idle:'var(--text-muted)',syncing:'var(--gold)',ok:'var(--accent)',error:'var(--danger)',offline:'var(--text-muted)'};
+  el.textContent=(icons[s]||s)+(msg?' — '+msg:'');
+  el.style.color=colors[s]||'var(--text-muted)';
+}
+
+async function loadFromServer(){
+  setSyncStatus('syncing');
+  try{
+    const r=await fetch(API_URL,{headers:{'x-roadmap-secret':SECRET},signal:AbortSignal.timeout(5000)});
+    if(!r.ok){setSyncStatus('error','HTTP '+r.status);return;}
+    const data=await r.json();
+    if(Array.isArray(data.checked)){
+      // Merge : union des coches locales et serveur
+      const remote=new Set(data.checked);
+      const local=new Set(JSON.parse(localStorage.getItem('lc-v5')||'[]'));
+      const merged=new Set([...remote,...local]);
+      checked=merged;
+      localStorage.setItem('lc-v5',JSON.stringify([...checked]));
+      // Si des coches locales ne sont pas sur le serveur, sauvegarder
+      if(merged.size>remote.size) await saveToServer();
+      else setSyncStatus('ok',fmtDate(data.updated_at));
+    }
+    updateStats();render();
+  }catch(e){
+    if(e.name==='TimeoutError'||e.name==='TypeError') setSyncStatus('offline');
+    else setSyncStatus('error');
+  }
+}
+
+let saveTimer=null;
+async function saveToServer(){
+  setSyncStatus('syncing');
+  try{
+    const r=await fetch(API_URL,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','x-roadmap-secret':SECRET},
+      body:JSON.stringify({checked:[...checked]}),
+      signal:AbortSignal.timeout(5000)
+    });
+    if(!r.ok){setSyncStatus('error','HTTP '+r.status);return;}
+    setSyncStatus('ok','à l\'instant');
+  }catch(e){
+    if(e.name==='TimeoutError'||e.name==='TypeError') setSyncStatus('offline');
+    else setSyncStatus('error');
+  }
+}
+
+function fmtDate(iso){
+  if(!iso)return'';
+  const d=new Date(iso);
+  return d.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});
+}
+
+// ─── FONCTIONS ───────────────────────────────────────────────────────────────
+function saveLocal(){localStorage.setItem('lc-v5',JSON.stringify([...checked]))}
+
+function save(){
+  saveLocal();
+  clearTimeout(saveTimer);
+  saveTimer=setTimeout(saveToServer,800); // debounce 800ms — évite un appel par coche
+}
+
+function sf(f,btn){filt=f;document.querySelectorAll('.fb').forEach(b=>b.classList.remove('on'));btn.classList.add('on');render()}
+function tp(id){openPhases.has(id)?openPhases.delete(id):openPhases.add(id);render()}
+function tt(id,e){e.stopPropagation();checked.has(id)?checked.delete(id):checked.add(id);save();updateStats();render()}
+function te(id,e){e.stopPropagation();openTasks.has(id)?openTasks.delete(id):openTasks.add(id);render()}
+function ft(tasks){return filt==='all'?tasks:tasks.filter(t=>t.tags&&t.tags.includes(filt))}
+
+function fmtDur(min){
+  if(!min||min===0)return'';
+  if(min<60)return min+'min';
+  const h=Math.floor(min/60),m=min%60;
+  return m?h+'h'+m:'h';
+}
+
+function updateStats(){
+  const done=[...checked].length;
+  const pct=Math.round(done/TOTAL*100);
+  const doneH=Math.round(P.flatMap(p=>p.sprints.flatMap(s=>s.tasks)).filter(t=>checked.has(t.id)).reduce((acc,t)=>acc+(t.dur||0),0)/60);
+  const remH=TOTAL_H-doneH;
+  document.getElementById('sDone').textContent=done;
+  document.getElementById('sTotal').textContent=TOTAL;
+  document.getElementById('sTotalH').textContent=TOTAL_H+'h';
+  document.getElementById('sPct').textContent=pct+'%';
+  document.getElementById('gBar').style.width=pct+'%';
+  document.getElementById('gPct').textContent=`${done} / ${TOTAL} tâches (${pct}%)`;
+  document.getElementById('gTime').textContent=remH+'h estimées restantes';
+}
+
+function render(){
+  const root=document.getElementById('root');root.innerHTML='';
+  P.forEach(ph=>{
+    const all=ph.sprints.flatMap(s=>s.tasks);
+    const fAll=ft(all);
+    if(filt!=='all'&&fAll.length===0)return;
+    const done=all.filter(t=>checked.has(t.id)).length;
+    const pct=all.length?Math.round(done/all.length*100):0;
+    const phH=Math.round(all.reduce((a,t)=>a+(t.dur||0),0)/60);
+    const isOpen=openPhases.has(ph.id);
+    let badge,btxt;
+    if(ph.vac){badge='pb-bk';btxt='Bloqué — Vacances';}
+    else if(pct===100){badge='pb-dn';btxt='Terminé ✓';}
+    else if(ph.status==='active'){badge='pb-ac';btxt='En cours · '+pct+'%';}
+    else{badge='pb-td';btxt='À venir · '+pct+'%';}
+
+    let body='';
+    if(isOpen){
+      const vb=ph.vac?`<div class="vb">🏖 Période bloquée : 8–22 juillet 2026 — Aucun travail. Les posts programmés se publient seuls.</div>`:'';
+      const sHtml=ph.sprints.map(sp=>{
+        const sft=ft(sp.tasks);
+        if(filt!=='all'&&sft.length===0)return'';
+        const spH=Math.round(sp.tasks.reduce((a,t)=>a+(t.dur||0),0)/60);
+        return`<div class="sp">
+          <div class="sph">
+            ${sp.n?`<span class="spn">${sp.n}</span>`:''}
+            <span class="spt">${sp.t}</span>
+            <span class="${sp.dl?'spdl':'spd'}">${sp.dl||sp.d}</span>
+          </div>
+          <div class="sp-meta"><span>⏱ ~${spH}h estimées pour ce sprint</span><span>${sp.tasks.filter(t=>checked.has(t.id)).length}/${sp.tasks.length} tâches</span></div>
+          <div class="tasks">${sft.map(tk=>{
+            const nm=tk.n||tk.name||'';
+            const isOpen2=openTasks.has(tk.id);
+            const difLabel=tk.dif===1?'Facile':tk.dif===2?'Moyen':'Difficile';
+            const hasMeta=tk.note||tk.tip;
+            return`<div class="task ${isOpen2?'open':''}">
+              <div class="tk-main" onclick="tt('${tk.id}',event)">
+                <div class="chk ${checked.has(tk.id)?'on':''}"></div>
+                <div class="tk-c">
+                  <div class="tk-n ${checked.has(tk.id)?'done':''}">${nm}</div>
+                  <div class="tk-row">
+                    ${tk.tags&&tk.tags.length?tk.tags.map(tg=>`<span class="tag tag-${tg}">${tg}</span>`).join(''):''}
+                    ${tk.dur?`<span class="tk-dur">⏱ ${fmtDur(tk.dur)}</span>`:''}
+                    ${tk.dif?`<span class="tk-dif dif-${tk.dif}">${difLabel}</span>`:''}
+                  </div>
+                </div>
+                ${hasMeta?`<button class="expand-btn" onclick="te('${tk.id}',event)">${isOpen2?'▲':'▼ détails'}</button>`:''}
+              </div>
+              ${isOpen2&&hasMeta?`<div class="tk-extra">
+                ${tk.note?`<div class="tk-note">${tk.note}</div>`:''}
+                ${tk.tip?`<div class="tk-tip">💡 <span>${tk.tip}</span></div>`:''}
+              </div>`:''}
+            </div>`;
+          }).join('')}</div>
+        </div>`;
+      }).join('');
+      const rHtml=ph.res&&ph.res.length?`<div class="rs"><div class="rl">Ressources</div><div class="ra-wrap">${ph.res.map(r=>`<a class="ra" href="${r.u}" target="_blank">${r.l}</a>`).join('')}</div></div>`:'';
+      body=`<div class="pb op">
+        <div class="pi">
+          <div class="ic"><div class="il">Début</div><div class="iv">${ph.start}</div></div>
+          <div class="ic"><div class="il">Deadline</div><div class="iv ${ph.vac?'g':'r'}">${ph.vac?ph.end:ph.dl}</div></div>
+          <div class="ic"><div class="il">Temps estimé</div><div class="iv b">~${phH}h</div></div>
+          <div class="ic"><div class="il">Progression</div><div class="iv">${done}/${all.length} tâches</div></div>
+        </div>
+        <div class="obj"><div class="ol">Objectif</div><div class="ot">${ph.obj}</div></div>
+        ${vb}
+        <div class="tb"><div class="tbf" style="width:${pct}%;background:${ph.color}"></div></div>
+        ${sHtml}${rHtml}
+      </div>`;
+    }
+    const d=document.createElement('div');d.className='phase';
+    d.innerHTML=`<div class="ph" onclick="tp('${ph.id}')">
+      <div class="ph-dot" style="background:${ph.color}"></div>
+      <div class="ph-ti">${ph.title}</div>
+      <span class="ph-wk">${ph.weeks}</span>
+      <span class="ph-tm">~${phH}h</span>
+      <span class="pbg ${badge}">${btxt}</span>
+      <span class="chv ${isOpen?'op':''}">▼</span>
+    </div>${body}`;
+    root.appendChild(d);
+  });
+}
+
+updateStats();
+render();
+// Chargement initial depuis le serveur
+loadFromServer();
+// Rechargement silencieux toutes les 60 secondes (synchro multi-appareils)
+setInterval(()=>{if(syncStatus!=='syncing')loadFromServer();},60000);
+</script>
+</body>
+</html>
